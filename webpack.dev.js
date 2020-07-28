@@ -14,7 +14,15 @@ module.exports = {
                 test: '/\.js$/',
                 exclude: /node_modules/,
                 loader: "babel-loader"
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                  'style-loader',   // 3: Creates `style` nodes from JS strings
+                  'css-loader',     // 2: Translates CSS into CommonJS
+                  'sass-loader'    // 1: Compiles Sass to CSS
+                ],
+              },
         ]
     },
     plugins: [
