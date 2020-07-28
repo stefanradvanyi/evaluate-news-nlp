@@ -1,7 +1,8 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -11,16 +12,16 @@ module.exports = {
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
             {
                 test: /\.scss$/,
                 use: [
-                  'style-loader',   // 3: Creates `style` nodes from JS strings
-                  'css-loader',     // 2: Translates CSS into CommonJS
-                  'sass-loader'    // 1: Compiles Sass to CSS
+                    'style-loader',   // 3: Creates `style` nodes from JS strings
+                    'css-loader',     // 2: Translates CSS into CommonJS
+                    'sass-loader'    // 1: Compiles Sass to CSS
                 ],
               },
         ]
@@ -38,6 +39,10 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
+        }),
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/index.html",
+            filename: "./index.html",
         })
     ]
 }

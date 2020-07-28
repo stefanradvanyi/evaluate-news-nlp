@@ -8,15 +8,11 @@ const app = express()
 
 let projectData = {};
 
-const app = express()
-
-app.use(express.static('dist'))
-app.use(cors());
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static('dist'))
+app.use(cors());
 
 console.log(__dirname)
 
