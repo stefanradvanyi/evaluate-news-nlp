@@ -1,8 +1,17 @@
+const dotenv = require('dotenv');
+dotenv.config();
 var path = require('path');
+var aylien = require("aylien_textapi");
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mockAPIResponse = require('./mockAPI.js');
+
+var textapi = new aylien({
+    application_id: process.env.API_ID,
+    application_key: process.env.API_KEY
+  });
+
 
 const app = express()
 
